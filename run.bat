@@ -8,15 +8,15 @@ if "%pyver%"=="Python 3.11.6" (
     echo Correct version of Python is already installed.
 ) else (
     echo Python 3.11.6 is not installed. Attempting to install...
-    powershell -Command "& { Invoke-WebRequest 'https://www.python.org/ftp/python/3.11.6/python-3.11.6-amd64.exe' -OutFile 'python-3.11.6-amd64.exe' }"
+    powershell -Command "& { Invoke-WebRequest 'https://www.python.org/ftp/python/3.11.6/python-3.11.6-amd64.exe' -OutFile 'python-3.10.0-amd32.exe' }"
     echo Running installer...
     :: Remove /quiet to make the installation process interactive
-    start /wait python-3.11.6-amd64.exe InstallAllUsers=1 PrependPath=1
+    start /wait python-3.10.0-amd32.exe InstallAllUsers=1 PrependPath=1
 
     :: Verify installation
     for /f "delims=" %%I in ('python --version 2^>^&1') do set "pyver=%%I"
-    if "%pyver%"=="Python 3.11.6" (
-        echo Python 3.11.6 installed successfully.
+    if "%pyver%"=="Python 3.10.0" (
+        echo Python 3.10.0 installed successfully.
     ) else (
         echo Done, start run.bat again.
         pause
